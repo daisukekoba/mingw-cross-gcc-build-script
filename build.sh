@@ -137,7 +137,7 @@ build_gmp()
   cd $work/gmp-$gmp_version
   mkdir -p _build
   cd _build
-  ../configure --prefix=$work $withgcc
+  ../configure --prefix=$work --disable-shared $withgcc
   make && make install
 }
 build_mpfr()
@@ -145,7 +145,7 @@ build_mpfr()
   cd $work/mpfr-$mpfr_version
   mkdir -p _build
   cd _build
-  ../configure --prefix=$work --with-gmp=$work $withgcc
+  ../configure --prefix=$work --with-gmp=$work --disable-shared $withgcc
   make && make install
 }
 build_mpc()
@@ -153,7 +153,8 @@ build_mpc()
   cd $work/mpc-$mpc_version
   mkdir -p _build
   cd _build
-  ../configure --prefix=$work --with-gmp=$work --with-mpfr=$work $withgcc
+  ../configure --prefix=$work --with-gmp=$work --with-mpfr=$work \
+	--disable-shared $withgcc
   make && make install
 }
 build_binutils()
