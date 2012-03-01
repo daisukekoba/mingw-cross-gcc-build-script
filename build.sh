@@ -134,34 +134,30 @@ extract_mpc()
 
 build_gmp()
 {
-  cd $work/gmp-$gmp_version
-  mkdir -p _build
-  cd _build
+  mkdir -p $work/gmp-$gmp_version/_build
+  cd $work/gmp-$gmp_version/_build
   ../configure --prefix=$work --disable-shared $withgcc
   make && make install
 }
 build_mpfr()
 {
-  cd $work/mpfr-$mpfr_version
-  mkdir -p _build
-  cd _build
+  mkdir -p $work/mpfr-$mpfr_version/_build
+  cd $work/mpfr-$mpfr_version/_build
   ../configure --prefix=$work --with-gmp=$work --disable-shared $withgcc
   make && make install
 }
 build_mpc()
 {
-  cd $work/mpc-$mpc_version
-  mkdir -p _build
-  cd _build
+  mkdir -p $work/mpc-$mpc_version/_build
+  cd $work/mpc-$mpc_version/_build
   ../configure --prefix=$work --with-gmp=$work --with-mpfr=$work \
 	--disable-shared $withgcc
   make && make install
 }
 build_binutils()
 {
-  cd $work/binutils-$binutils_version
-  mkdir -p _build
-  cd _build
+  mkdir -p $work/binutils-$binutils_version/_build
+  cd $work/binutils-$binutils_version/_build
   local opt="--prefix=$prefix --with-sysroot=$prefix \
 	--target=$target --disable-shared --disable-debug"
   if [ $param = '--multi' ]; then
@@ -174,9 +170,8 @@ build_binutils()
 }
 install_mingww64_headers()
 {
-  cd $work/mingw-w64-v$mingww64_version
-  mkdir -p _build-headers
-  cd _build-headers
+  mkdir -p $work/mingw-w64-v$mingww64_version/_build-headers
+  cd $work/mingw-w64-v$mingww64_version/_build-headers
   ../mingw-w64-headers/configure --prefix=$prefix \
 	--build=$build --host=$target
   make install
@@ -192,9 +187,8 @@ create_symlink()
 }
 build_gcc_core()
 {
-  cd $work/gcc-$gcc_version
-  mkdir -p _build
-  cd _build
+  mkdir -p $work/gcc-$gcc_version/_build
+  cd $work/gcc-$gcc_version/_build
   local opt="--prefix=$prefix --with-sysroot=$prefix --target=$target \
 	--with-gmp=$work --with-mpfr=$work --with-mpc=$work \
 	--enable-languages=c,c++ --enable-threads --enable-lto \
@@ -209,9 +203,8 @@ build_gcc_core()
 }
 build_mingww64_crt()
 {
-  cd $work/mingw-w64-v$mingww64_version
-  mkdir -p _build-crt
-  cd _build-crt
+  mkdir -p $work/mingw-w64-v$mingww64_version/_build-crt
+  cd $work/mingw-w64-v$mingww64_version/_build-crt
   local opt="--prefix=$prefix --with-sysroot=$prefix \
 	--build=$target --host=$target"
   if [ $param = '--multi' ]; then
