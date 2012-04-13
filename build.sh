@@ -16,10 +16,10 @@
 # OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 # ----------------------------------------------------------------------------
 
-gcc_version=4.6.2
+gcc_version=4.7.0
 binutils_version=2.22
-mingww64_version=2.0.1
-gmp_version=5.0.2
+mingww64_version=2.0.2
+gmp_version=5.0.4
 mpfr_version=3.1.0
 mpc_version=0.9
 
