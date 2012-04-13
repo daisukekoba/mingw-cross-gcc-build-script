@@ -191,7 +191,7 @@ build_gcc_core()
   cd $work/gcc-$gcc_version/_build
   local opt="--prefix=$prefix --with-sysroot=$prefix --target=$target \
 	--with-gmp=$work --with-mpfr=$work --with-mpc=$work \
-	--enable-languages=c,c++ --enable-threads --enable-lto \
+	--enable-languages=c,c++ --enable-threads \
 	--disable-shared --disable-debug"
   if [ $param = '--multi' ]; then
     opt="$opt --enable-targets=all"
