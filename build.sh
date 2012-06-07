@@ -28,9 +28,6 @@ build=$(cc -dumpmachine)
 target=
 prefix=
 
-# for Mac OS X Lion
-withgcc="CC=gcc-4.2 CXX=g++-4.2 CPP=cpp-4.2 LD=gcc-4.2"
-
 param_count=$#
 param=$1
 
@@ -136,14 +133,14 @@ build_gmp()
 {
   mkdir -p $work/gmp-$gmp_version/_build
   cd $work/gmp-$gmp_version/_build
-  ../configure --prefix=$work --disable-shared $withgcc
+  ../configure --prefix=$work --disable-shared
   make && make install
 }
 build_mpfr()
 {
   mkdir -p $work/mpfr-$mpfr_version/_build
   cd $work/mpfr-$mpfr_version/_build
-  ../configure --prefix=$work --with-gmp=$work --disable-shared $withgcc
+  ../configure --prefix=$work --with-gmp=$work --disable-shared
   make && make install
 }
 build_mpc()
@@ -151,7 +148,7 @@ build_mpc()
   mkdir -p $work/mpc-$mpc_version/_build
   cd $work/mpc-$mpc_version/_build
   ../configure --prefix=$work --with-gmp=$work --with-mpfr=$work \
-	--disable-shared $withgcc
+	--disable-shared
   make && make install
 }
 build_binutils()
@@ -165,7 +162,7 @@ build_binutils()
   else
     opt="$opt --disable-multilib"
   fi
-  ../configure $opt $withgcc
+  ../configure $opt
   make && make install
 }
 install_mingww64_headers()
@@ -198,7 +195,7 @@ build_gcc_core()
   else
     opt="$opt --disable-multilib"
   fi
-  ../configure $opt $withgcc
+  ../configure $opt
   make all-gcc && make install-gcc
 }
 build_mingww64_crt()
@@ -210,7 +207,7 @@ build_mingww64_crt()
   if [ $param = '--multi' ]; then
     opt="$opt --enable-lib32"
   fi
-  ../mingw-w64-crt/configure $opt
+  CC= CXX= CPP= LD= ../mingw-w64-crt/configure $opt
   make && make install
 }
 build_gcc()
