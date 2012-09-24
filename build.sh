@@ -18,7 +18,7 @@
 
 gcc_version=4.7.1
 binutils_version=2.22
-mingww64_version=2.0.4
+mingww64_version=2.0.6
 gmp_version=5.0.5
 mpfr_version=3.1.1
 mpc_version=0.9
