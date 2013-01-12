@@ -84,7 +84,7 @@ download_gmp()
 download_mpfr()
 {
   [ -f mpfr-$mpfr_version.tar.bz2 ] && return
-  curl -O http://www.mpfr.org/mpfr-current/mpfr-$mpfr_version.tar.bz2
+  curl -O http://www.mpfr.org/mpfr-$mpfr_version/mpfr-$mpfr_version.tar.bz2
 }
 download_mpc()
 {
